@@ -30,6 +30,18 @@ public class ProduitController {
             return new ResponseEntity<>("Produit not found for id: "+id, HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/{id}/categorie")
+    public ResponseEntity<?>  getProduitByIdCategorie(@PathVariable Integer id){
+        Optional<Produit> optionalProduit = produitService.getProduitById(id);
+        if(optionalProduit.isPresent()){
+            return new ResponseEntity<>(optionalProduit.get(), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("Produit not found for id: "+id, HttpStatus.NOT_FOUND);
+        }
+    }
+
+
     @PostMapping("/create")
     public ResponseEntity<Produit> createProduit(@RequestBody Produit produit){
         return  new ResponseEntity<>(produitService.createProduit(produit),HttpStatus.CREATED);

@@ -14,14 +14,14 @@ import java.util.List;
 @Table(name = "Produit")
 public class Produit {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_Produit;
     private String type;
     @Column(unique = true)
     private String reference;
     private String description;
     private String prix;
-
-
-
+    @ManyToOne
+    private Categorie categorie;
 }
