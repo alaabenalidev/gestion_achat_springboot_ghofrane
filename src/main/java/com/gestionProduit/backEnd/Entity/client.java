@@ -20,5 +20,7 @@ public class client {
     @Column(unique = true)
     private String num_tel;
     private String ville;
+    @ManyToOne
+    private Categorie categorie;
 
 }

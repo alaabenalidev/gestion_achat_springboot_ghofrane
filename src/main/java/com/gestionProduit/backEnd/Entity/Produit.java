@@ -24,4 +24,6 @@ public class Produit {
     private String prix;
     @ManyToOne
     private Categorie categorie;
+    @ManyToOne
+    private client client;
 }

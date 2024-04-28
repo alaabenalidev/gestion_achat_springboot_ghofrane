@@ -17,44 +17,42 @@ public class ProduitController {
     private ProduitService produitService;
 
     @GetMapping("/list")
-    public ResponseEntity<List<Produit>> getAllProduit(){
-        return new ResponseEntity<>(produitService.getAllProduit(),HttpStatus.OK);
+    public ResponseEntity<List<Produit>> getAllProduit() {
+        return new ResponseEntity<>(produitService.getAllProduit(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?>  getProduitById(@PathVariable Integer id){
+    public ResponseEntity<?> getProduitById(@PathVariable Integer id) {
         Optional<Produit> optionalProduit = produitService.getProduitById(id);
-        if(optionalProduit.isPresent()){
+        if (optionalProduit.isPresent()) {
             return new ResponseEntity<>(optionalProduit.get(), HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>("Produit not found for id: "+id, HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>("Produit not found for id: " + id, HttpStatus.NOT_FOUND);
         }
     }
 
     @GetMapping("/{id}/categorie")
-    public ResponseEntity<?>  getProduitByIdCategorie(@PathVariable Integer id){
-        Optional<Produit> optionalProduit = produitService.getProduitById(id);
-        if(optionalProduit.isPresent()){
-            return new ResponseEntity<>(optionalProduit.get(), HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>("Produit not found for id: "+id, HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<?> getProduitByIdCategorie(@PathVariable Integer id) {
+        List<Produit> produits = produitService.getProduitByIdCategorie(id);
+
+        return new ResponseEntity<>(produits, HttpStatus.OK);
     }
 
 
     @PostMapping("/create")
-    public ResponseEntity<Produit> createProduit(@RequestBody Produit produit){
-        return  new ResponseEntity<>(produitService.createProduit(produit),HttpStatus.CREATED);
+    public ResponseEntity<Produit> createProduit(@RequestBody Produit produit) {
+        return new ResponseEntity<>(produitService.createProduit(produit), HttpStatus.CREATED);
     }
+
     @PutMapping("/{id}")
-    public ResponseEntity<Produit> updateProduit(@RequestBody Produit produit,@PathVariable Integer id){
-        return  new ResponseEntity<>(produitService.updateProduit(produit,id),HttpStatus.OK);
+    public ResponseEntity<Produit> updateProduit(@RequestBody Produit produit, @PathVariable Integer id) {
+        return new ResponseEntity<>(produitService.updateProduit(produit, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> removeProduitByid(@PathVariable Integer id){
+    public ResponseEntity<?> removeProduitByid(@PathVariable Integer id) {
         produitService.removeProduitById(id);
-        return  ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build();
     }
 
 }

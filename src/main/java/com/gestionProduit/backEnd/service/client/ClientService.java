@@ -10,6 +10,7 @@ public interface ClientService {
     List<client> getAllClinet();
     Optional<client> getClinetById(Integer id);
     client createClient(client clientInfo);
+    List<client> getProduitByIdCategorie(Integer id);
     client updateClinet(client clientInfo,Integer id);
     void removeClinetById(Integer id);
 }

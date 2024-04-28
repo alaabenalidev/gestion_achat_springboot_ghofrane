@@ -1,6 +1,7 @@
 package com.gestionProduit.backEnd.controller;
 
 
+import com.gestionProduit.backEnd.Entity.Produit;
 import com.gestionProduit.backEnd.Entity.client;
 import com.gestionProduit.backEnd.service.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class ClientController {
     @PostMapping("/create")
     public ResponseEntity<client> createClient(@RequestBody client clientInfo){
         return  new ResponseEntity<>(clientService.createClient(clientInfo),HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}/categorie")
+    public ResponseEntity<?> getProduitByIdCategorie(@PathVariable Integer id) {
+        return new ResponseEntity<>(clientService.getProduitByIdCategorie(id), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")

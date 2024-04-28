@@ -1,6 +1,8 @@
 package com.gestionProduit.backEnd.service.client;
 
+import com.gestionProduit.backEnd.Entity.Categorie;
 import com.gestionProduit.backEnd.Entity.client;
+import com.gestionProduit.backEnd.repository.CategorieRepository;
 import com.gestionProduit.backEnd.repository.ClientRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Autowired
     private ClientRepository clientRepository;
+    @Autowired
+    private CategorieRepository categorieRepository;
 
     @Override
     public List<client> getAllClinet() {
@@ -23,6 +27,15 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Optional<client> getClinetById(Integer id) {
         return clientRepository.findById(id);
+    }
+
+    @Override
+    public List<client> getProduitByIdCategorie(Integer id) {
+        Optional<Categorie> categorie = categorieRepository.findById(id);
+        if (categorie.isPresent()) {
+            return clientRepository.findByCategorie(categorie.get());
+        }
+        return List.of();
     }
 
     @Override
