@@ -33,7 +33,8 @@ public class ClientServiceImpl implements ClientService {
     public List<client> getProduitByIdCategorie(Integer id) {
         Optional<Categorie> categorie = categorieRepository.findById(id);
         if (categorie.isPresent()) {
-            return clientRepository.findByCategorie(categorie.get());
+//            return clientRepository.findByCategorie(categorie.get());
+            return clientRepository.findAll();
         }
         return List.of();
     }

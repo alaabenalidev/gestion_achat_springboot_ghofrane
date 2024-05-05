@@ -1,5 +1,6 @@
 package com.gestionProduit.backEnd.Entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,16 +12,16 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "Produit")
-public class Produit {
+@Table(name = "client")
+public class Commande {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_Produit;
-    private String type;
-    @Column(unique = true)
-    private String reference;
-    private String description;
-    @ManyToOne
-    private Categorie categorie;
+    private Integer id;
+
+
+    @OneToMany
+    private List<LigneCommande> ligneCommandes;
+
+
 }

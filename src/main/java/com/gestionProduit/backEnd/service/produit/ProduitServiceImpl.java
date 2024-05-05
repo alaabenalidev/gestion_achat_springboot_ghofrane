@@ -35,6 +35,7 @@ public class ProduitServiceImpl implements ProduitService {
         Optional<Categorie> categorie = categorieRepository.findById(id);
         if (categorie.isPresent()) {
             return produitRepository.findByCategorie(categorie.get());
+//            return produitRepository.findAll();
         }
         return List.of();
     }
@@ -52,7 +53,6 @@ public class ProduitServiceImpl implements ProduitService {
             existProduit.setType(produit.getType());
             existProduit.setDescription(produit.getDescription());
             existProduit.setReference(produit.getReference());
-            existProduit.setPrix(produit.getPrix());
             return produitRepository.save(existProduit);
         } else {
             throw new EntityNotFoundException("Produit id not found : " + id);
