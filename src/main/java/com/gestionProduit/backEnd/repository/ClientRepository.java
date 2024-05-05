@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface ClientRepository extends JpaRepository<client,Integer> {
 
+    List<client> findByCategorie(Categorie categorie);
+
 }

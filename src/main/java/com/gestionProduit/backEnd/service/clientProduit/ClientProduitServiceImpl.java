@@ -2,7 +2,7 @@ package com.gestionProduit.backEnd.service.clientProduit;
 
 
 import com.gestionProduit.backEnd.Entity.ClientProduit;
-import com.gestionProduit.backEnd.Entity.FournisseurClientDTO;
+import com.gestionProduit.backEnd.Entity.dtos.FournisseurClientDTO;
 import com.gestionProduit.backEnd.Entity.Produit;
 import com.gestionProduit.backEnd.repository.ClientProduitRepository;
 import com.gestionProduit.backEnd.repository.ClientRepository;
@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

@@ -18,7 +18,7 @@ public class LigneCommande {
     private Integer id;
 
     @OneToOne
-    private Produit produit;
+        private ClientProduit produit;
 
     private int qte;
 

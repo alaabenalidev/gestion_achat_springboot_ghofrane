@@ -1,7 +1,7 @@
 package com.gestionProduit.backEnd.service.clientProduit;
 
 import com.gestionProduit.backEnd.Entity.ClientProduit;
-import com.gestionProduit.backEnd.Entity.FournisseurClientDTO;
+import com.gestionProduit.backEnd.Entity.dtos.FournisseurClientDTO;
 
 import java.util.List;
 import java.util.Optional;

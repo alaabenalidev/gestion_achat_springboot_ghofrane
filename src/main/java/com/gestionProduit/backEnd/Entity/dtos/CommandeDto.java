@@ -1,4 +1,10 @@
 package com.gestionProduit.backEnd.Entity.dtos;
 
-public class CommandeDto {
+import java.util.List;
+
+public record CommandeDto(Integer client, List<ItemDto> items) {
+
+    public record ItemDto(Integer id, Integer qte) {
+    }
+
 }

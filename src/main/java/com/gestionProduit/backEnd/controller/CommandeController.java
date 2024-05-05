@@ -2,6 +2,7 @@ package com.gestionProduit.backEnd.controller;
 
 import com.gestionProduit.backEnd.Entity.Categorie;
 import com.gestionProduit.backEnd.Entity.Commande;
+import com.gestionProduit.backEnd.Entity.dtos.CommandeDto;
 import com.gestionProduit.backEnd.service.Commande.CommandeService;
 import com.gestionProduit.backEnd.service.categorie.CategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class CommandeController {
         }
     }
     @PostMapping("/create")
-    public ResponseEntity<Commande> createCategorie(@RequestBody Commande commandeInfo){
+    public ResponseEntity<Commande> createCategorie(@RequestBody CommandeDto commandeInfo){
         return  new ResponseEntity<>(commandeService.createCommande(commandeInfo),HttpStatus.CREATED);
     }
 

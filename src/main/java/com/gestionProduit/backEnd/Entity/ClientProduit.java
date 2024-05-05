@@ -3,7 +3,6 @@ package com.gestionProduit.backEnd.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.io.Serializable;
 
 @Entity
 @AllArgsConstructor

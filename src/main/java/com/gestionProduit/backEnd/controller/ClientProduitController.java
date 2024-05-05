@@ -1,10 +1,8 @@
 package com.gestionProduit.backEnd.controller;
 
 import com.gestionProduit.backEnd.Entity.ClientProduit;
-import com.gestionProduit.backEnd.Entity.FournisseurClientDTO;
-import com.gestionProduit.backEnd.Entity.Produit;
+import com.gestionProduit.backEnd.Entity.dtos.FournisseurClientDTO;
 import com.gestionProduit.backEnd.service.clientProduit.ClientProduitService;
-import com.gestionProduit.backEnd.service.produit.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

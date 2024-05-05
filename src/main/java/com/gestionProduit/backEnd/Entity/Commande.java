@@ -12,13 +12,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "client")
+@Table(name = "commande")
 public class Commande {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @ManyToOne
+    private client client;
 
     @OneToMany
     private List<LigneCommande> ligneCommandes;
