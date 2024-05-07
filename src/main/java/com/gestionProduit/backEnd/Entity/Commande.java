@@ -19,9 +19,6 @@ public class Commande {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    private client client;
-
     @OneToMany
     private List<LigneCommande> ligneCommandes;
 

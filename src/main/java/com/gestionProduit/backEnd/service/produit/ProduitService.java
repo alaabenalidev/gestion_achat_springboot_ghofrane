@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface ProduitService {
     List<Produit> getAllProduit();
+    List<Produit> searchProduit(String search);
     Optional<Produit> getProduitById(Integer id);
     List<Produit> getProduitByIdCategorie(Integer id);
     Produit createProduit(Produit produit);

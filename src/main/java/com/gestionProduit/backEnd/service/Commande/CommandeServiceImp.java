@@ -41,7 +41,6 @@ public class CommandeServiceImp implements CommandeService {
     public Commande createCommande(CommandeDto commandeDto) {
         Commande commande = new Commande();
         List<LigneCommande> ligneCommandes = new ArrayList<>();
-        commande.setClient(clientRepository.findById(commandeDto.client()).get());
         commandeDto.items().forEach(item -> {
             LigneCommande ligneCommande  = new LigneCommande();
             ligneCommande.setProduit(clientProduitRepository.findById(item.id()).get());

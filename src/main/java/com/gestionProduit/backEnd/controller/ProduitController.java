@@ -21,6 +21,11 @@ public class ProduitController {
         return new ResponseEntity<>(produitService.getAllProduit(), HttpStatus.OK);
     }
 
+    @GetMapping("/search/{word}")
+    public ResponseEntity<List<Produit>> searchProduit(@PathVariable String word) {
+        return new ResponseEntity<>(produitService.searchProduit(word), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getProduitById(@PathVariable Integer id) {
         Optional<Produit> optionalProduit = produitService.getProduitById(id);

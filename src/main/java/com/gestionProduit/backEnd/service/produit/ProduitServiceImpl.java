@@ -26,6 +26,11 @@ public class ProduitServiceImpl implements ProduitService {
     }
 
     @Override
+    public List<Produit> searchProduit(String search) {
+        return produitRepository.rechercheProduit(search);
+    }
+
+    @Override
     public Optional<Produit> getProduitById(Integer id) {
         return produitRepository.findById(id);
     }
