@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,8 +19,8 @@ public class LigneCommande {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne
-        private ClientProduit produit;
+//    @ManyToOne(cascade = CascadeType.REMOVE)
+//    private ClientProduit clientProduit;
 
     private int qte;
 

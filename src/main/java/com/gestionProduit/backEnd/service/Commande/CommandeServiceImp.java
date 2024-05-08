@@ -1,6 +1,7 @@
 package com.gestionProduit.backEnd.service.Commande;
 
 import com.gestionProduit.backEnd.Entity.Categorie;
+import com.gestionProduit.backEnd.Entity.ClientProduit;
 import com.gestionProduit.backEnd.Entity.Commande;
 import com.gestionProduit.backEnd.Entity.LigneCommande;
 import com.gestionProduit.backEnd.Entity.dtos.CommandeDto;
@@ -42,8 +43,10 @@ public class CommandeServiceImp implements CommandeService {
         Commande commande = new Commande();
         List<LigneCommande> ligneCommandes = new ArrayList<>();
         commandeDto.items().forEach(item -> {
-            LigneCommande ligneCommande  = new LigneCommande();
-            ligneCommande.setProduit(clientProduitRepository.findById(item.id()).get());
+            LigneCommande ligneCommande = new LigneCommande();
+            List<ClientProduit> temp = new ArrayList<>();
+//            temp.add();
+//            ligneCommande.setClientProduit(clientProduitRepository.findById(item.id()).get());
             ligneCommande.setQte(item.qte());
             ligneCommande = ligneCommandeRepository.save(ligneCommande);
             ligneCommandes.add(ligneCommande);

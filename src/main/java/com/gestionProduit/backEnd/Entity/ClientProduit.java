@@ -3,6 +3,8 @@ package com.gestionProduit.backEnd.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Entity
 @AllArgsConstructor
@@ -11,14 +13,15 @@ import lombok.*;
 @Table(name = "client_produit")
 public class ClientProduit {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "fournisseur_id")
     client fournisseur;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "produit_id")
     Produit produit;
 
@@ -26,5 +29,7 @@ public class ClientProduit {
 
     int remis;
 
+    @OneToMany(cascade = CascadeType.REMOVE)
+    private List<LigneCommande> ligneCommandes;
 
 }
