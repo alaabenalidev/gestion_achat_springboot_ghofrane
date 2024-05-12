@@ -52,7 +52,7 @@ public class ClientServiceImpl implements ClientService {
             existingClinet.setNom(clientInfo.getNom());
             existingClinet.setAdresse(clientInfo.getAdresse());
             existingClinet.setNum_tel(clientInfo.getNum_tel());
-            existingClinet.setVille(clientInfo.getVille());
+            existingClinet.setEmail(clientInfo.getEmail());
             return clientRepository.save(existingClinet);
         } else {
             throw new EntityNotFoundException("Client id not found : " + id);
