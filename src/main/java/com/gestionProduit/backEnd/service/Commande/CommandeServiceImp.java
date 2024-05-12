@@ -1,6 +1,5 @@
 package com.gestionProduit.backEnd.service.Commande;
 
-import com.gestionProduit.backEnd.Entity.Categorie;
 import com.gestionProduit.backEnd.Entity.ClientProduit;
 import com.gestionProduit.backEnd.Entity.Commande;
 import com.gestionProduit.backEnd.Entity.LigneCommande;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class CommandeServiceImp implements CommandeService {
@@ -42,16 +42,19 @@ public class CommandeServiceImp implements CommandeService {
     public Commande createCommande(CommandeDto commandeDto) {
         Commande commande = new Commande();
         List<LigneCommande> ligneCommandes = new ArrayList<>();
+        AtomicReference<Double> prixTotale = new AtomicReference<>((double) 0);
         commandeDto.items().forEach(item -> {
             LigneCommande ligneCommande = new LigneCommande();
-            List<ClientProduit> temp = new ArrayList<>();
-//            temp.add();
-            ligneCommande.setClientProduit(clientProduitRepository.findById(item.id()).get());
+            ClientProduit clientProduit = clientProduitRepository.findById(item.id()).get();
+            ligneCommande.setClientProduit(clientProduit);
             ligneCommande.setQte(item.qte());
+
+            prixTotale.updateAndGet(v -> (v + clientProduit.getPrix() * item.qte()));
             ligneCommande = ligneCommandeRepository.save(ligneCommande);
             ligneCommandes.add(ligneCommande);
         });
         commande.setLigneCommandes(ligneCommandes);
+        commande.setPrixTotale(prixTotale.get());
         return commandeRepository.save(commande);
     }
 
