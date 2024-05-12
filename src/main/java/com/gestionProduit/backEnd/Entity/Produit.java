@@ -17,9 +17,11 @@ public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_Produit;
+    @Column(nullable = false, unique = true)
     private String type;
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private String reference;
+    @Column(nullable = false)
     private String description;
     @ManyToOne
     private Categorie categorie;
