@@ -45,8 +45,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public client updateClinet(client clientInfo, Integer id) {
-        Optional<client> clientOptional =  clientRepository.findById(id);
-        if(clientOptional.isPresent()){
+        Optional<client> clientOptional = clientRepository.findById(id);
+        if (clientOptional.isPresent()) {
             client existingClinet = clientOptional.get();
             existingClinet.setPrenom(clientInfo.getPrenom());
             existingClinet.setNom(clientInfo.getNom());
@@ -54,18 +54,32 @@ public class ClientServiceImpl implements ClientService {
             existingClinet.setNum_tel(clientInfo.getNum_tel());
             existingClinet.setVille(clientInfo.getVille());
             return clientRepository.save(existingClinet);
-        }else{
-            throw  new EntityNotFoundException("Client id not found : "+id);
+        } else {
+            throw new EntityNotFoundException("Client id not found : " + id);
         }
     }
 
     @Override
     public void removeClinetById(Integer id) {
-        Optional<client> clientOptional =  clientRepository.findById(id);
-        if(clientOptional.isPresent()){
+        Optional<client> clientOptional = clientRepository.findById(id);
+        if (clientOptional.isPresent()) {
             clientRepository.deleteById(id);
-        }else{
-            throw  new EntityNotFoundException("Client id not found : "+id);
+        } else {
+            throw new EntityNotFoundException("Client id not found : " + id);
+        }
+
+    }
+
+    @Override
+    public void affectUserToCategory(Integer idUser, Integer idCategory) {
+        Optional<Categorie> categorie = categorieRepository.findById(idCategory);
+        if (categorie.isPresent()) {
+            Optional<client> clientOptional = clientRepository.findById(idUser);
+            if (clientOptional.isPresent()) {
+                client clientObject = clientOptional.get();
+                clientObject.setCategorie(categorie.get());
+                clientRepository.save(clientObject);
+            }
         }
 
     }

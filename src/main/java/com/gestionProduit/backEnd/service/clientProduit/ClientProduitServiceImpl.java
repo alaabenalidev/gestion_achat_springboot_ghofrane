@@ -2,6 +2,7 @@ package com.gestionProduit.backEnd.service.clientProduit;
 
 
 import com.gestionProduit.backEnd.Entity.ClientProduit;
+import com.gestionProduit.backEnd.Entity.client;
 import com.gestionProduit.backEnd.Entity.dtos.FournisseurClientDTO;
 import com.gestionProduit.backEnd.Entity.Produit;
 import com.gestionProduit.backEnd.repository.ClientProduitRepository;
@@ -42,6 +43,15 @@ public class ClientProduitServiceImpl implements ClientProduitService {
     }
 
     @Override
+    public List<ClientProduit> getClientProduitsByClientId(Integer id) {
+        Optional<client> clientUser = clientRepository.findById(id);
+        if (clientUser.isPresent()) {
+            return clientProduitRepository.findByFournisseur(clientUser.get());
+        }
+        return List.of();
+    }
+
+    @Override
     public List<ClientProduit> getClientProduitByProduit(Integer id) {
         Optional<Produit> produit = produitRepository.findById(id);
         if (produit.isPresent()) {
@@ -70,6 +80,7 @@ public class ClientProduitServiceImpl implements ClientProduitService {
             clientProduit.setFournisseur(clientRepository.findById(el.fournisseur()).get());
             clientProduit.setProduit(produitRepository.findById(el.produit()).get());
             clientProduit.setPrix(el.prix());
+            clientProduit.setQuantite(el.quantite());
             clientProduitRepository.save(clientProduit);
 //            clientProduits.add(clientProduit);
         });

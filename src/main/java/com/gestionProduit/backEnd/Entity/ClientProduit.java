@@ -2,6 +2,7 @@ package com.gestionProduit.backEnd.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class ClientProduit {
 
     float prix;
 
-    int remis;
+    int quantite;
 
     @OneToMany(cascade = CascadeType.REMOVE)
     private List<LigneCommande> ligneCommandes;

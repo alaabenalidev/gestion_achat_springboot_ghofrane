@@ -32,6 +32,13 @@ public class ClientProduitController {
         }
     }
 
+    @GetMapping("/{id}/fournisseur")
+    public ResponseEntity<?> getClientProduitByProduitId(@PathVariable Integer id) {
+        List<ClientProduit> produits = clientProduitService.getClientProduitsByClientId(id);
+
+        return new ResponseEntity<>(produits, HttpStatus.OK);
+    }
+
     @GetMapping("/{id}/produit")
     public ResponseEntity<?> getClientProduitByIdProduit(@PathVariable Integer id) {
         List<ClientProduit> clientProduits = clientProduitService.getClientProduitByProduit(id);

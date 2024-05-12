@@ -13,4 +13,5 @@ public interface ClientService {
     List<client> getProduitByIdCategorie(Integer id);
     client updateClinet(client clientInfo,Integer id);
     void removeClinetById(Integer id);
+    void affectUserToCategory(Integer idUser,Integer idCategory);
 }

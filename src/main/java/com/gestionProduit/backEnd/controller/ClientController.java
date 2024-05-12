@@ -51,5 +51,11 @@ public class ClientController {
          return  ResponseEntity.noContent().build();
     }
 
+    @PatchMapping("/{idUser}/affect/{idCateg}")
+    public ResponseEntity<?> affectUserToCategory(@PathVariable Integer idUser,@PathVariable Integer idCateg){
+        clientService.affectUserToCategory(idUser, idCateg);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }

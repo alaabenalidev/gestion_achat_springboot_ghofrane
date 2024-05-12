@@ -9,6 +9,9 @@ import java.util.Optional;
 public interface ClientProduitService {
     List<ClientProduit> getAllClientProduit();
     Optional<ClientProduit> getClientProduitById(Integer id);
+
+    List<ClientProduit> getClientProduitsByClientId(Integer id);
+
     List<ClientProduit> getClientProduitByProduit(Integer id);
     ClientProduit createClientProduit(ClientProduit clientProduit);
     List<ClientProduit> createListClientProduit(List<FournisseurClientDTO> clientProduit);

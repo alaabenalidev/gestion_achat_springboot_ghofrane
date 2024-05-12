@@ -60,4 +60,10 @@ public class ProduitController {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping("/{id}/four")
+    public ResponseEntity<?> getProductsByFournisseur(@PathVariable Integer id) {
+        produitService.removeProduitById(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

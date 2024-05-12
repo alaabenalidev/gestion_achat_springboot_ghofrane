@@ -46,7 +46,7 @@ public class CommandeServiceImp implements CommandeService {
             LigneCommande ligneCommande = new LigneCommande();
             List<ClientProduit> temp = new ArrayList<>();
 //            temp.add();
-//            ligneCommande.setClientProduit(clientProduitRepository.findById(item.id()).get());
+            ligneCommande.setClientProduit(clientProduitRepository.findById(item.id()).get());
             ligneCommande.setQte(item.qte());
             ligneCommande = ligneCommandeRepository.save(ligneCommande);
             ligneCommandes.add(ligneCommande);

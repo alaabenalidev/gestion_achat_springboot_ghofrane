@@ -19,8 +19,8 @@ public class LigneCommande {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-//    @ManyToOne(cascade = CascadeType.REMOVE)
-//    private ClientProduit clientProduit;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    private ClientProduit clientProduit;
 
     private int qte;
 
